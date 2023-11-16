@@ -1,0 +1,8 @@
+# Arquivo .gitignore
+
+# Ignorar a pasta node_modules no diretório FrontEnd
+FrontEnd/node_modules/
+
+# Ignorar a pasta node_modules no diretório graf-wall-api
+graf-wall-api/node_modules/
+
