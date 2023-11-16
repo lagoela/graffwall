@@ -1,0 +1,50 @@
+version: "3"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: container-GrafWall
+    ports:
+      - "19000:19000"
+      - "19001:19001"
+      - "19002:19002"
+      - "19006:19006"
+      - "8082:8082"
+      - "8081:8081"
+    depends_on:
+      - db
+      - api
+    volumes:
+      - .:/app
+    networks:
+      - mynetwork
+
+  db:
+    build:
+      context: ../Database
+      dockerfile: Dockerfile.mysql
+    container_name: container-banco-GrafWall
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: HNj74PYaX7
+      MYSQL_DATABASE: banco-grafwall-mysql
+      MYSQL_USER: supervisor
+      MYSQL_PASSWORD: jysOS9o8lB
+    networks:
+      - mynetwork
+
+  api:
+    build:
+      context: ../graf-wall-api
+      dockerfile: Dockerfile
+    container_name: container-api-GrafWall
+    ports:
+      - "3000:3000" # Para acessar a API localmente
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
