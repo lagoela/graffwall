@@ -1,0 +1,12 @@
+
+FROM mysql:latest
+
+
+ENV MYSQL_ROOT_PASSWORD=HNj74PYaX7
+ENV MYSQL_DATABASE=banco-grafwall-mysql
+ENV MYSQL_USER=supervisor
+ENV MYSQL_PASSWORD=jysOS9o8lB
+
+
+
+EXPOSE 3306

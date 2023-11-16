@@ -1,0 +1,77 @@
+# Arquivo .gitignore
+
+# Ignorar a pasta node_modules no diretório FrontEnd
+FrontEnd/node_modules/
+
+# Ignorar a pasta node_modules no diretório graf-wall-api
+graf-wall-api/node_modules/
+graf-wall-api/dist
+
+# compiled output
+/dist
+
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+
+# Tests
+/coverage
+/.nyc_output
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+
+# Arquivo .gitignore na pasta raiz do projeto
+
+# Ignorar node_modules dentro da pasta FrontEnd (Expo)
+FrontEnd/node_modules/
+
+# Ignorar arquivos de build
+FrontEnd/web-build/
+FrontEnd/ios/Pods/
+FrontEnd/ios/Podfile.lock
+FrontEnd/android/.gradle/
+FrontEnd/android/local.properties
+
+# Ignorar arquivos de sistema
+FrontEnd/.DS_Store
+
+# Ignorar logs e arquivos temporários
+FrontEnd/npm-debug.log
+FrontEnd/yarn-error.log
+
+# Outros arquivos de build e dependências específicas do Expo/React Native
+FrontEnd/*.apk
+FrontEnd/*.aab
+FrontEnd/*.ipa
+FrontEnd/*.expo
+FrontEnd/*.xcworkspace
+FrontEnd/*.log
+FrontEnd/*.tmp
+FrontEnd/*.jks
+FrontEnd/*.keystore
+
+
