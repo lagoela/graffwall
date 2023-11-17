@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { View, ImageBackground, StatusBar } from "react-native";
-import { Button, Input, Text } from "@rneui/themed";
-import styles from "../../../style/mainStyle";
-import FormStyles from "../../../style/FormStyle";
+import { View, StatusBar, Text, StyleSheet, Image, TextInput, TouchableOpacity } from "react-native";
 
 export default function Welcome({ navigation }) {
+
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
@@ -20,49 +18,96 @@ export default function Welcome({ navigation }) {
   };
 
   return (
+
     <View style={styles.container}>
-      <StatusBar hidden={true} />
-      <View style={styles.backgroundImage}>
-        <ImageBackground
-          source={require("../../../images/background.png")}
-          resizeMode="cover"
-          style={styles.image}
-        />
+
+      <StatusBar
+        hidden={true}
+      />
+
+      <Text style={styles.title}>GraffWall</Text>
+
+      <View style={styles.containerImgLogin}>
+        <Image
+          style={styles.imgLogin}
+          source={require("../../assets/imgLogin.png")} />
       </View>
-      <View style={FormStyles.container}>
-        <Input
-          placeholder="E-mail"
-          keyboardType="email-address"
-          leftIcon={{
-            type: "font-awesome",
-            name: "envelope",
-          }}
-          onChange={(value) => setEmail(value)}
-        />
 
-        <Input
-          placeholder="Senha"
-          leftIcon={{
-            type: "font-awesome",
-            name: "lock",
-          }}
-          onChange={(value) => setPassword(value)}
-          secureTextEntry={true}
-        />
+      <TextInput placeholder='Email' style={styles.textInput} onChangeText={text => setEmail(text)}></TextInput>
 
-        <Button
-          title="Entrar"
-          buttonStyle={{ backgroundColor: "rgba(39, 39, 39, 1)" }}
-          onPress={() => login()}
-        />
+      <TextInput secureTextEntry={true} placeholder='Senha' style={styles.textInput} onChangeText={text => setPassward(text)}></TextInput>
 
-        <Button
-          title="Cadastre-se"
-          titleStyle={{ color: "rgba(1,1,1,1)" }}
-          onPress={() => newUser({ navigation })}
-          buttonStyle={{ backgroundColor: "rgba(39, 39, 39, 0)" }}
-        />
-      </View>
+      <TouchableOpacity style={styles.btnInput} onPress={() => navigation.navigate('Home')} >
+        <Text style={styles.textoBtnInput}>LOGIN</Text>
+
+      </TouchableOpacity>
+      <Text style={styles.linkCadastro} onPress={() => navigation.navigate('Signin')}>Quero me cadastrar</Text>
+
     </View>
+
+
+
   );
 }
+
+const styles = StyleSheet.create({
+
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20
+  },
+
+  title: {
+    fontSize: 50,
+  },
+
+  containerImgLogin: {
+    padding: 30,
+    margin: 20,
+    borderWidth: 2,
+    borderRadius: 100
+  },
+
+  imgLogin: {
+    width: 100,
+    height: 100,
+  },
+
+  textInput: {
+    borderWidth: 2,
+    width: '100%',
+    height: 40,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    paddingLeft: 10,
+    marginBottom: 10
+  },
+
+
+  textoBtnInput: {
+    color: 'gray',
+    textAlign: 'center'
+  },
+
+  btnInput: {
+    borderWidth: 2,
+    width: '50%',
+    height: 40,
+    borderRadius: 10,
+    backgroundColor: 'white',
+    justifyContent: 'center'
+  },
+
+  textoBtnInput: {
+    color: 'gray',
+    textAlign: 'center'
+  },
+
+  linkCadastro: {
+    padding: 10,
+    marginVertical: 20
+  },
+})
