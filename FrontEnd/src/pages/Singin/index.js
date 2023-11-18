@@ -2,10 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import { Button, Input, Text } from "@rneui/themed";
 import { Formik } from "formik";
-
 import validationSchema from "../../validations/userRegistrationValidationSchema";
-import styles from "../../../style/mainStyle";
-import FormStyles from "../../../style/FormStyle";
 import usuarioService from "../../services/userService";
 
 export default function SignIn({ navigation }) {
@@ -52,7 +49,7 @@ export default function SignIn({ navigation }) {
         errors,
         touched,
       }) => (
-        <View style={[styles.container, FormStyles.container]}>
+        <View>
           <Text h1>Cadastre-se já!</Text>
 
           <Input
