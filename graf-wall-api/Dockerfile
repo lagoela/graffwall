@@ -21,4 +21,4 @@ ADD https://github.com/vishnubob/wait-for-it/raw/master/wait-for-it.sh /usr/wait
 RUN chmod +x /usr/wait-for-it.sh
 
 
-CMD /usr/wait-for-it.sh db:3306 -- npm run start:dev
+CMD /usr/wait-for-it.sh db:3307 -- npm run start:dev
