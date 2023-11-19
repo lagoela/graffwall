@@ -1,18 +1,20 @@
 import { createStackNavigator } from "@react-navigation/stack";
 
-import Welcome from "../pages/Welcome";
+import Login from "../pages/Login";
 import SignIn from "../pages/Singin";
-import HomeScreen from "../pages/Home"
+import DrawerRoutes from "./drawerRoutes";
+
 
 const Stack = createStackNavigator();
 
 export default function StackRoutes() {
   return (
 
-    <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+
       <Stack.Screen
-        name="Welcome"
-        component={Welcome}
+        name="Login"
+        component={Login}
       />
 
       <Stack.Screen
@@ -21,10 +23,11 @@ export default function StackRoutes() {
       />
 
       <Stack.Screen
-        name='Home'
-        component={HomeScreen}
+        name="Drawer"
+        component={DrawerRoutes}
       />
-    </Stack.Navigator>  
-      
+
+    </Stack.Navigator>
+
   );
 }

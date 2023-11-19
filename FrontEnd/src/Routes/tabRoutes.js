@@ -1,7 +1,8 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Image } from 'react-native'
 
-import PerfilGrafiteiroScreen from "../pages/Perfil-Grafiteiro"
-import  InsertPropertyScreen  from "../pages/InsertProperty"
+import PerfilGrafiteiroScreen from "../pages/PerfilGrafiteiro"
+import PerfilOwnerScreen from "../pages/PerfilOwner"
 
 const Tab = createBottomTabNavigator();
 
@@ -10,13 +11,13 @@ export default function TabRoutes() {
         <Tab.Navigator screenOptions={{ headerShown: false }}>
 
             <Tab.Screen
-                name='PerfilGrafiteiro'
+                name='Graff'
                 component={PerfilGrafiteiroScreen}
             />
 
             <Tab.Screen
-                name='InsertProperty'
-                component={InsertPropertyScreen}
+                name='Wall'
+                component={PerfilOwnerScreen}
             />
 
         </Tab.Navigator>

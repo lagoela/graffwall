@@ -1,11 +1,12 @@
 import { NavigationContainer } from "@react-navigation/native";
 
-import TabRoutes from "./tabRoutes";
+import StackRoutes from "./stackRoutes";
 
-export default function App() {
+
+export default function Routes() {
   return (
     <NavigationContainer>
-      <TabRoutes />
+      <StackRoutes />
     </NavigationContainer>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, StatusBar, Text, StyleSheet, Image, TextInput, TouchableOpacity } from "react-native";
 
-export default function Welcome({ navigation }) {
+export default function Login({ navigation }) {
 
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
@@ -13,7 +13,7 @@ export default function Welcome({ navigation }) {
   const newUser = () => {
     navigation.reset({
       index: 0,
-      routes: [{ name: "Signin" }],
+      routes: [{ name: "Login" }],
     });
   };
 
@@ -35,9 +35,9 @@ export default function Welcome({ navigation }) {
 
       <TextInput placeholder='Email' style={styles.textInput} onChangeText={text => setEmail(text)}></TextInput>
 
-      <TextInput secureTextEntry={true} placeholder='Senha' style={styles.textInput} onChangeText={text => setPassward(text)}></TextInput>
+      <TextInput secureTextEntry={true} placeholder='Senha' style={styles.textInput} onChangeText={text => setPassword(text)}></TextInput>
 
-      <TouchableOpacity style={styles.btnInput} onPress={() => navigation.navigate('Home')} >
+      <TouchableOpacity style={styles.btnInput} onPress={() => navigation.navigate('Drawer')} >
         <Text style={styles.textoBtnInput}>LOGIN</Text>
 
       </TouchableOpacity>
