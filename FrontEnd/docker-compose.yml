@@ -25,6 +25,8 @@ services:
     networks:
       - mynetwork
     command: /bin/sh -c "npm run start:dev"
+    volumes:
+      - ../graf-wall-api:/app
 
 networks:
   mynetwork:
