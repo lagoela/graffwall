@@ -9,7 +9,7 @@ export default function SignIn({ navigation }) {
   const returnToLogin = () => {
     navigation.reset({
       index: 0,
-      routes: [{ name: "Welcome" }],
+      routes: [{ name: "Login" }],
     });
   };
 

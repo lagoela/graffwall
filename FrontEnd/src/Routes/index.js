@@ -1,30 +1,12 @@
-import { createStackNavigator } from "@react-navigation/stack";
-import Welcome from "../pages/Welcome";
-import SignIn from "../pages/Singin";
-import HomeScreen from "../pages/Home"
+import { NavigationContainer } from "@react-navigation/native";
 
-const Stack = createStackNavigator();
+import StackRoutes from "./stackRoutes";
+
 
 export default function Routes() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Welcome"
-        component={Welcome}
-        options={{ headerShown: false }}
-      />
-
-      <Stack.Screen
-        name="Signin"
-        component={SignIn}
-        options={{ headerShown: false }}
-      />
-
-      <Stack.Screen
-        name='Home'
-        component={HomeScreen}
-        options={{ headerShown: false }}
-      />
-    </Stack.Navigator>
+    <NavigationContainer>
+      <StackRoutes />
+    </NavigationContainer>
   );
 }
