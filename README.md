@@ -1,6 +1,6 @@
 # GraffWall: Conectando Arte e Espaços
 
-O GraffWall é um projeto concebido como parte do curso de Análise e Desenvolvimento de Sistemas (ADS) do SENAC EAD. Trata-se de um aplicativo móvel inovador projetado para unir proprietários de muros ou espaços vazios a artistas e grafiteiros talentosos. Com uma interface intuitiva, nossa plataforma proporciona uma conexão direta entre quem busca transformar seus espaços e artistas disponíveis para expressar sua arte.
+O GraffWall é um projeto concebido como parte do curso de Análise e Desenvolvimento de Sistemas (ADS) do Centro Universitário SENAC (EAD). Trata-se de um aplicativo móvel inovador projetado para unir proprietários de muros ou espaços vazios à artistas e grafiteiros talentosos. Com uma interface intuitiva, nossa plataforma proporciona uma conexão direta entre quem busca transformar seus espaços e artistas disponíveis para expressar sua arte.
 
 Este projeto é resultado do curso de ADS no SENAC EAD, visando oferecer uma plataforma que conecta a visão dos proprietários de espaços à criatividade dos artistas, promovendo a expressão artística em comunidades de forma colaborativa.
 
