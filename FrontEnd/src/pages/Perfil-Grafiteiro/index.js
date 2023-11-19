@@ -1,24 +1,27 @@
 import * as React from 'react';
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { View, Pressable, Text, Image, StyleSheet } from 'react-native';
+import { Pressable, Text, Image, StyleSheet } from 'react-native';
 
 
 
-export default function HomeScreen() {
-    
+export default function PerfilGrafiteiroScreen() {
+
     return (
 
         <SafeAreaProvider style={{ backgroundColor: '#ffffff' }}>
+
             <SafeAreaView style={style.container1}>
                 <Text style={style.textTitle}>
                     GRAFFWALL
                 </Text>
             </SafeAreaView>
+
             <SafeAreaView style={style.container2}>
                 <Text style={style.textTitle}>
                     ULTIMAS PROPOSTAS
                 </Text>
             </SafeAreaView>
+
             <SafeAreaView style={style.container3}>
                 <Text style={style.textTitle}>
                     PROPRIEDADES
@@ -43,7 +46,13 @@ export default function HomeScreen() {
                         </Text>
                     </Pressable>
                 </SafeAreaView>
+
             </SafeAreaView>
+
+            <SafeAreaView style={style.bottomBar}>
+
+            </SafeAreaView>
+
         </SafeAreaProvider>
 
     )
@@ -51,17 +60,16 @@ export default function HomeScreen() {
 
 const style = StyleSheet.create({
     container1: {
-        flex: 1,
-        backgroundColor: 'gray',
-        marginBottom: 5
+        marginBottom: 5,
+        borderBottomWidth: 1
     },
     container2: {
-        flex: 3,
-        backgroundColor: 'gray',
-        marginBottom: 5
+        flex: 1,
+        marginBottom: 5,
+        borderBottomWidth: 1
     },
     container3: {
-        flex: 3,
+        flex: 1,
         marginBottom: 5
     },
     textTitle: {
@@ -71,6 +79,7 @@ const style = StyleSheet.create({
         marginBottom: 10
     },
     containerBtnProps: {
+        flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around'
@@ -92,5 +101,12 @@ const style = StyleSheet.create({
     btnTextProp: {
         fontSize: 20,
         alignSelf: 'center',
+    },
+
+    bottomBar: {
+        height: 80,
+        borderWidth: 1,
+        borderTopRightRadius: 40,
+        borderTopLeftRadius: 40
     }
 })
