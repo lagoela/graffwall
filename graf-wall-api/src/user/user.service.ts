@@ -23,6 +23,8 @@ export class UserService {
     user.sobrenome = data.lastName;
     user.senha = data.password;
 
+    console.log(user);
+
     try {
       const savedUser = await this.userRepository.save(user);
 

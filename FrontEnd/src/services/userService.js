@@ -4,6 +4,7 @@ import Config from "../../util/Config";
 
 class UsuarioService {
   async cadastrar(data) {
+    console.log("ip : " + Config.API_URL);
     return axios({
       url: Config.API_URL + "user/register",
       method: "POST",

@@ -8,6 +8,8 @@ RUN apt-get update
 WORKDIR /app
 
 
+RUN npm install expo --save
+
 COPY package*.json ./
 
 
