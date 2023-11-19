@@ -25,13 +25,13 @@ export default function PerfilOwnerScreen() {
                         PROPRIEDADES
                     </Text>
                     <SafeAreaView style={style.containerBtnProps}>
-                        <Pressable style={style.btnsProp}>
+                        <Pressable style={style.btnsProp} >
                             <Image
                                 style={style.btnImageProp}
                                 source={require("../../assets/btnAdicao.png")}
                             />
                             <Text style={style.btnTextProp}>
-                                cadastrar
+                                Cadastrar
                             </Text>
                         </Pressable>
                         <Pressable style={style.btnsProp} >
@@ -40,7 +40,7 @@ export default function PerfilOwnerScreen() {
                                 source={require("../../assets/btnLapis.png")}
                             />
                             <Text style={style.btnTextProp}>
-                                editar
+                                Editar
                             </Text>
                         </Pressable>
                     </SafeAreaView>
