@@ -1,8 +1,10 @@
 import { createStackNavigator } from "@react-navigation/stack";
 
+
 import Login from "../pages/Login";
 import SignIn from "../pages/Singin";
-import DrawerRoutes from "./drawerRoutes";
+import CadastroWallScreen from "../pages/CadastroWalls";
+import TabRoutes from './tabRoutes';
 
 
 const Stack = createStackNavigator();
@@ -23,8 +25,13 @@ export default function StackRoutes() {
       />
 
       <Stack.Screen
-        name="Drawer"
-        component={DrawerRoutes}
+        name="CadastroWall"
+        component={CadastroWallScreen}
+      />
+
+      <Stack.Screen
+        name="TabBar"
+        component={TabRoutes}
       />
 
     </Stack.Navigator>

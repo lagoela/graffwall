@@ -57,7 +57,6 @@ export default function Login({ navigation }) {
           source={require("../../assets/imgLogin.png")}
         />
       </View>
-
       <TextInput
         placeholder="Email"
         style={styles.textInput}
