@@ -175,3 +175,35 @@ export default function SignIn({ navigation }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 20,
+  },
+  formContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+  },
+  inputContainer: {
+    width: "100%",
+    marginTop: 20,
+  },
+  nameInputContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 10,
+  },
+  input: {
+    flex: 1,
+    marginHorizontal: 5,
+  },
+  button: {
+    marginTop: 10,
+    width: "50%",
+  },
+});
