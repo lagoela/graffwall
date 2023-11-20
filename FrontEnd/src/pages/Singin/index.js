@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { Button, Input, Text } from "@rneui/themed";
 import { Formik } from "formik";
 import validationSchema from "../../validations/userRegistrationValidationSchema";
@@ -25,11 +25,12 @@ export default function SignIn({ navigation }) {
       .cadastrar(formattedValues)
       .then((response) => {
         const titulo = response.data.status ? "Sucesso" : "Erro";
-
-        //Alert.alert(titulo, response.data.mensagem)
+        
+        // Alert.alert(titulo, response.data.mensagem);
       })
       .catch((error) => {
-        //Alert.alert("Erro", "Houve um erro inesperado")
+    
+        // Alert.alert("Erro", "Houve um erro inesperado");
       });
     console.log(formattedValues);
     returnToLogin();
@@ -49,131 +50,124 @@ export default function SignIn({ navigation }) {
         errors,
         touched,
       }) => (
-        <View>
-          <Text h1>Cadastre-se já!</Text>
+        <View style={styles.container}>
+          <View style={styles.formContainer}>
+            <Text h1>Cadastre-se já!</Text>
 
-          <Input
-            placeholder="Nome"
-            leftIcon={{
-              type: "font-awesome",
-              name: "user",
-            }}
-            onChangeText={handleChange("nome")}
-            onBlur={handleBlur("nome")}
-            value={values.nome}
-          />
-          {touched.nome && errors.nome && (
-            <Text style={{ color: "red" }}>{errors.nome}</Text>
-          )}
+            <View style={styles.inputContainer}>
+              <View style={styles.nameInputContainer}>
+                <Input
+                  placeholder="Nome"
+                  leftIcon={{
+                    type: "font-awesome",
+                    name: "user",
+                  }}
+                  onChangeText={handleChange("nome")}
+                  onBlur={handleBlur("nome")}
+                  value={values.nome}
+                  containerStyle={styles.input}
+                />
+                <Input
+                  placeholder="Sobrenome"
+                  leftIcon={{
+                    type: "font-awesome",
+                    name: "user",
+                  }}
+                  onChangeText={handleChange("sobrenome")}
+                  onBlur={handleBlur("sobrenome")}
+                  value={values.sobrenome}
+                  containerStyle={styles.input}
+                />
+              </View>
+              {touched.nome && errors.nome && (
+                <Text style={{ color: "red" }}>{errors.nome}</Text>
+              )}
+              {touched.sobrenome && errors.sobrenome && (
+                <Text style={{ color: "red" }}>{errors.sobrenome}</Text>
+              )}
 
-          <Input
-            placeholder="Sobrenome"
-            leftIcon={{
-              type: "font-awesome",
-              name: "user",
-            }}
-            onChangeText={handleChange("sobrenome")}
-            onBlur={handleBlur("sobrenome")}
-            value={values.sobrenome}
-          />
-          {touched.sobrenome && errors.sobrenome && (
-            <Text style={{ color: "red" }}>{errors.sobrenome}</Text>
-          )}
+              <Input
+                placeholder="E-mail"
+                keyboardType="email-address"
+                leftIcon={{
+                  type: "font-awesome",
+                  name: "envelope",
+                }}
+                onChangeText={handleChange("email")}
+                onBlur={handleBlur("email")}
+                value={values.email}
+                containerStyle={styles.input}
+              />
+              {touched.email && errors.email && (
+                <Text style={{ color: "red" }}>{errors.email}</Text>
+              )}
 
-          <Input
-            placeholder="E-mail"
-            keyboardType="email-address"
-            leftIcon={{
-              type: "font-awesome",
-              name: "envelope",
-            }}
-            onChangeText={handleChange("email")}
-            onBlur={handleBlur("email")}
-            value={values.email}
-          />
-          {touched.email && errors.email && (
-            <Text style={{ color: "red" }}>{errors.email}</Text>
-          )}
+              <Input
+                placeholder="Password"
+                leftIcon={{
+                  type: "font-awesome",
+                  name: "lock",
+                }}
+                onChangeText={handleChange("password")}
+                onBlur={handleBlur("password")}
+                value={values.password}
+                secureTextEntry={true}
+                containerStyle={styles.input}
+              />
+              {touched.password && errors.password && (
+                <Text style={{ color: "red" }}>{errors.password}</Text>
+              )}
 
-          <Input
-            placeholder="Senha"
-            leftIcon={{
-              type: "font-awesome",
-              name: "lock",
-            }}
-            onChangeText={handleChange("password")}
-            onBlur={handleBlur("password")}
-            value={values.password}
-            secureTextEntry={true}
-          />
-          {touched.password && errors.password && (
-            <Text style={{ color: "red" }}>{errors.password}</Text>
-          )}
+              <Button
+                title="Cadastrar"
+                buttonStyle={{ backgroundColor: "rgba(39, 39, 39, 1)" }}
+                onPress={handleSubmit}
+                containerStyle={styles.button}
+              />
+            </View>
 
-          <Button
-            title="Cadastrar"
-            buttonStyle={{ backgroundColor: "rgba(39, 39, 39, 1)" }}
-            onPress={handleSubmit}
-          />
-          <Button
-            title="voltar"
-            titleStyle={{ color: "rgba(1,1,1,1)" }}
-            onPress={returnToLogin}
-            buttonStyle={{ backgroundColor: "rgba(39, 39, 39, 0)" }}
-          />
+            <Button
+              title="voltar"
+              titleStyle={{ color: "rgba(1,1,1,1)" }}
+              onPress={returnToLogin}
+              buttonStyle={{ backgroundColor: "rgba(39, 39, 39, 0)" }}
+              containerStyle={styles.button}
+            />
+          </View>
         </View>
       )}
     </Formik>
   );
 }
-const style = StyleSheet.create({
 
-  mainContainer: {
-      flex: 1,
-      backgroundColor: '#ffffff',
-      marginHorizontal: 16
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 20,
   },
-  container2: {
-      flex: 1,
-      marginBottom: 5,
+  formContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
   },
-  container3: {
-      flex: 1,
+  inputContainer: {
+    width: "100%",
+    marginTop: 20,
   },
-  textTitle: {
-      fontWeight: 'bold',
-      fontSize: 15,
-      marginBottom: 10
+  nameInputContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 10,
   },
-  containerBtnProps: {
-      flex: 1,
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'space-around'
+  input: {
+    flex: 1,
+    marginHorizontal: 5,
   },
-  btnsProp: {
-      width: 150,
-      height: 150,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: 'orange',
-      borderWidth: 1,
-      backgroundColor: '#dedede',
-      borderRadius: 10
+  button: {
+    marginTop: 10,
+    width: "50%",
   },
-  btnImageProp: {
-      width: 40,
-      height: 40,
-  },
-  btnTextProp: {
-      fontSize: 20,
-      alignSelf: 'center',
-  },
-
-  bottomBar: {
-      height: 80,
-      borderWidth: 1,
-      borderTopRightRadius: 40,
-      borderTopLeftRadius: 40
-  }
-})
+});
