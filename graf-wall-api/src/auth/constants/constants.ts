@@ -1,4 +1,3 @@
 export const jwtConstants = {
-  secret:
-    'CHAVE SEGURA PARA GERAR O TOKEN DE FORMA PROVISORIA CASO SIGAMOS COM O APP, ALTERAMOS ESSA CHAVE',
+  secret: 'CHAVE SEGURA ÓÓÓ',
 };
