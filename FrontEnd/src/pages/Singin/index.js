@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Modal, TouchableOpacity } from "react-native";
+import { View, Modal, TouchableOpacity, StyleSheet } from "react-native";
 import { Button, Input, Text } from "@rneui/themed";
 import { Formik } from "formik";
 import validationSchema from "../../validations/userRegistrationValidationSchema";
