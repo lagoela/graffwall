@@ -5,13 +5,13 @@ O GraffWall é um projeto concebido como parte do curso de Análise e Desenvolvi
 Este projeto é resultado do curso de ADS no SENAC EAD, visando oferecer uma plataforma que conecta a visão dos proprietários de espaços à criatividade dos artistas, promovendo a expressão artística em comunidades de forma colaborativa.
 
 ## Integrantes do Grupo
-Carollina Guedes Machado
-Danilo Gomes Torquato
-Enzo Adriano Lagoela Souza
-Everton Santana Natividade
-Leonardo Da Silva Oliveira
-Marcelo Alvaro de Sousa
-Rodrigo Schiavone Rosa
+- Carollina Guedes Machado
+- Danilo Gomes Torquato
+- Enzo Adriano Lagoela Souza
+- Everton Santana Natividade
+- Leonardo Da Silva Oliveira
+- Marcelo Alvaro de Sousa
+- Rodrigo Schiavone Rosa
 
 ## Requisitos
 
