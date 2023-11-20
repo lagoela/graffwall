@@ -62,6 +62,7 @@ export default function SignIn({ navigation }) {
                 type: "font-awesome",
                 name: "user",
               }}
+              underlineColorAndroid="transparent"
               onChangeText={handleChange("nome")}
               onBlur={handleBlur("nome")}
               value={values.nome}
