@@ -4,28 +4,37 @@ import { Pressable, Text, Image, StyleSheet, View } from 'react-native';
 
 
 
-export default function PerfilOwnerScreen() {
+export default function PerfilOwnerScreen({ navigation }) {
 
     return (
 
-        <SafeAreaProvider style={{ backgroundColor: '#ffffff' }}>
+        <SafeAreaProvider style={{ backgroundColor: 'white' }}>
 
             <SafeAreaView style={style.mainContainer}>
 
-
+                <SafeAreaView style={style.headerContainer}>
+                    <View style={{ alignSelf: 'center', marginRight: 10 }}>
+                        <Image
+                            style={style.menuHamburguer}
+                            source={require("../../assets/menuHamburger.png")} />
+                    </View>
+                    <Text style={{ alignSelf: 'center', fontSize: 25, marginRight: 10, fontWeight: 'bold' }}>
+                        GraffWall
+                    </Text>
+                </SafeAreaView>
 
                 <SafeAreaView style={style.container2}>
                     <Text style={style.textTitle}>
-                        ULTIMAS PROPOSTAS
+                        Ultimas propostas
                     </Text>
                 </SafeAreaView>
 
                 <SafeAreaView style={style.container3}>
                     <Text style={style.textTitle}>
-                        PROPRIEDADES
+                        Propriedades
                     </Text>
                     <SafeAreaView style={style.containerBtnProps}>
-                        <Pressable style={style.btnsProp} >
+                        <Pressable style={style.btnsProp} onPress={() => navigation.navigate('CadastroWall')}>
                             <Image
                                 style={style.btnImageProp}
                                 source={require("../../assets/btnAdicao.png")}
@@ -58,9 +67,15 @@ const style = StyleSheet.create({
 
     mainContainer: {
         flex: 1,
-        backgroundColor: '#ffffff',
-        marginHorizontal: 16
+        backgroundColor: 'white',
+        marginHorizontal: 15
     },
+    headerContainer: {
+        height: 50,
+        flexDirection: 'row',
+        marginBottom: 15
+    }
+    ,
     container2: {
         flex: 1,
         marginBottom: 5,
@@ -70,11 +85,10 @@ const style = StyleSheet.create({
     },
     textTitle: {
         fontWeight: 'bold',
-        fontSize: 15,
-        marginBottom: 10
+        fontSize: 20,
+        marginBottom: 30
     },
     containerBtnProps: {
-        flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around'
@@ -84,10 +98,17 @@ const style = StyleSheet.create({
         height: 150,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'orange',
-        borderWidth: 1,
-        backgroundColor: '#dedede',
-        borderRadius: 10
+        backgroundColor: 'white',
+        borderRadius: 10,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+
     },
     btnImageProp: {
         width: 40,
@@ -98,10 +119,8 @@ const style = StyleSheet.create({
         alignSelf: 'center',
     },
 
-    bottomBar: {
-        height: 80,
-        borderWidth: 1,
-        borderTopRightRadius: 40,
-        borderTopLeftRadius: 40
+    menuHamburguer: {
+        width: 30,
+        height: 30
     }
 })

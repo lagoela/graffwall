@@ -37,7 +37,7 @@ export default function Login({ navigation }) {
 
       <TextInput secureTextEntry={true} placeholder='Senha' style={styles.textInput} onChangeText={text => setPassword(text)}></TextInput>
 
-      <TouchableOpacity style={styles.btnInput} onPress={() => navigation.navigate('Drawer')} >
+      <TouchableOpacity style={styles.btnInput} onPress={() => navigation.navigate('TabBar')} >
         <Text style={styles.textoBtnInput}>LOGIN</Text>
 
       </TouchableOpacity>
