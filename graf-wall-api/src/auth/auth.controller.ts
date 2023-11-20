@@ -23,7 +23,7 @@ export class AuthController {
   }
 
   @UseGuards(AuthGuard)
-  @Get('Home')
+  @Get('Drawer')
   getHome(@Request() req) {
     return req.user;
   }

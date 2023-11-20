@@ -1,13 +1,41 @@
 import React, { useState } from "react";
-import { View, StatusBar, Text, StyleSheet, Image, TextInput, TouchableOpacity } from "react-native";
+import usuarioService from "../../services/userService";
+import {
+  View,
+  StatusBar,
+  Text,
+  StyleSheet,
+  Image,
+  TextInput,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 
 export default function Login({ navigation }) {
-
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const login = () => {
-    console.log("Entrou");
+  const login = (email, password) => {
+    const formattedValues = {
+      email: email,
+      password: password,
+    };
+    setIsLoading(true);
+    usuarioService
+      .logIn(formattedValues)
+      .then((response) => {
+        const titulo = response.data.status ? "Sucesso" : "Erro";
+        setIsLoading(false);
+        navigation.reset({
+          index: 0,
+          routes: [{ name: "Drawer" }],
+        });
+        //Alert.alert(titulo, response.data.mensagem)
+      })
+      .catch((error) => {});
+    setIsLoading(false);
+    console.log(formattedValues);
   };
 
   const newUser = () => {
@@ -18,46 +46,57 @@ export default function Login({ navigation }) {
   };
 
   return (
-
     <View style={styles.container}>
-
-      <StatusBar
-        hidden={true}
-      />
+      <StatusBar hidden={true} />
 
       <Text style={styles.title}>GraffWall</Text>
 
       <View style={styles.containerImgLogin}>
         <Image
           style={styles.imgLogin}
-          source={require("../../assets/imgLogin.png")} />
+          source={require("../../assets/imgLogin.png")}
+        />
       </View>
 
-      <TextInput placeholder='Email' style={styles.textInput} onChangeText={text => setEmail(text)}></TextInput>
+      <TextInput
+        placeholder="Email"
+        style={styles.textInput}
+        onChangeText={(text) => setEmail(text)}
+      ></TextInput>
 
-      <TextInput secureTextEntry={true} placeholder='Senha' style={styles.textInput} onChangeText={text => setPassword(text)}></TextInput>
+      <TextInput
+        secureTextEntry={true}
+        placeholder="Senha"
+        style={styles.textInput}
+        onChangeText={(text) => setPassword(text)}
+      ></TextInput>
+      {isLoading && <ActivityIndicator />}
 
-      <TouchableOpacity style={styles.btnInput} onPress={() => navigation.navigate('Drawer')} >
-        <Text style={styles.textoBtnInput}>LOGIN</Text>
-
-      </TouchableOpacity>
-      <Text style={styles.linkCadastro} onPress={() => navigation.navigate('Signin')}>Quero me cadastrar</Text>
-
+      {!isLoading && (
+        <TouchableOpacity
+          style={styles.btnInput}
+          onPress={() => login(email, password)}
+        >
+          <Text style={styles.textoBtnInput}>LOGIN</Text>
+        </TouchableOpacity>
+      )}
+      <Text
+        style={styles.linkCadastro}
+        onPress={() => navigation.navigate("Signin")}
+      >
+        Quero me cadastrar
+      </Text>
     </View>
-
-
-
   );
 }
 
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20
+    backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 20,
   },
 
   title: {
@@ -68,7 +107,7 @@ const styles = StyleSheet.create({
     padding: 30,
     margin: 20,
     borderWidth: 2,
-    borderRadius: 100
+    borderRadius: 100,
   },
 
   imgLogin: {
@@ -78,36 +117,35 @@ const styles = StyleSheet.create({
 
   textInput: {
     borderWidth: 2,
-    width: '100%',
+    width: "100%",
     height: 40,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderRadius: 10,
     paddingLeft: 10,
-    marginBottom: 10
+    marginBottom: 10,
   },
 
-
   textoBtnInput: {
-    color: 'gray',
-    textAlign: 'center'
+    color: "gray",
+    textAlign: "center",
   },
 
   btnInput: {
     borderWidth: 2,
-    width: '50%',
+    width: "50%",
     height: 40,
     borderRadius: 10,
-    backgroundColor: 'white',
-    justifyContent: 'center'
+    backgroundColor: "white",
+    justifyContent: "center",
   },
 
   textoBtnInput: {
-    color: 'gray',
-    textAlign: 'center'
+    color: "gray",
+    textAlign: "center",
   },
 
   linkCadastro: {
     padding: 10,
-    marginVertical: 20
+    marginVertical: 20,
   },
-})
+});

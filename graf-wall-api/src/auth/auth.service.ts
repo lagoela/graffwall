@@ -23,7 +23,7 @@ export class AuthService {
     const payload = { sub: user.email, username: user.id };
     const NEWtoken = await this.jwtService.signAsync(payload);
     this.tokenService.save(NEWtoken, user.email);
-
+    console.log(user.nome + ' ' + NEWtoken);
     return {
       access_token: NEWtoken,
     };
