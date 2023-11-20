@@ -13,3 +13,4 @@ COPY ./init.sql /docker-entrypoint-initdb.d/
 
 # Exponha a porta do MySQL
 EXPOSE 3307
+     
