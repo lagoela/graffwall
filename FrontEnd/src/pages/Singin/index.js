@@ -39,7 +39,7 @@ export default function SignIn({ navigation }) {
   };
 
   return (
-    <View>
+    <View style={{flex: 1}}>
       <Formik
         initialValues={{ nome: "", sobrenome: "", email: "", password: "" }}
         validationSchema={validationSchema}
