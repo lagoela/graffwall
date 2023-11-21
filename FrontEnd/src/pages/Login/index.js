@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import usuarioService from "../../services/userService";
 import {
   View,
@@ -9,12 +9,44 @@ import {
   TextInput,
   TouchableOpacity,
   ActivityIndicator,
+  Keyboard,
+  Modal,
 } from "react-native";
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        setKeyboardVisible(true);
+      }
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        setKeyboardVisible(false);
+      }
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
+
+  const closeModal = () => {
+    setModalVisible(false);
+    setModalMessage(''); // Limpa a mensagem do modal
+    setEmail(''); // Limpa o valor do email
+    setPassword(''); // Limpa o valor da senha
+  };
 
   const login = (email, password) => {
     const formattedValues = {
@@ -29,12 +61,14 @@ export default function Login({ navigation }) {
         setIsLoading(false);
         navigation.reset({
           index: 0,
-          routes: [{ name: "Drawer" }],
+          routes: [{ name: "TabBar" }],
         });
-        //Alert.alert(titulo, response.data.mensagem)
       })
-      .catch((error) => {});
-    setIsLoading(false);
+      .catch((error) => {
+        setIsLoading(false);
+        setModalMessage("Email ou login inválido. Tente novamente");
+        setModalVisible(true);
+      });
     console.log(formattedValues);
   };
 
@@ -49,7 +83,9 @@ export default function Login({ navigation }) {
     <View style={styles.container}>
       <StatusBar hidden={true} />
 
-      <Text style={styles.title}>GraffWall</Text>
+      <Text style={[styles.title, isKeyboardVisible && { opacity: 0 }]}>
+        GraffWall
+      </Text>
 
       <View style={styles.containerImgLogin}>
         <Image
@@ -85,6 +121,26 @@ export default function Login({ navigation }) {
       >
         Quero me cadastrar
       </Text>
+
+      {/* Modal */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={closeModal}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text>{modalMessage}</Text>
+            <TouchableOpacity
+              onPress={closeModal}
+              style={styles.modalButton}
+            >
+              <Text style={{ color: "white" }}>Fechar</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -146,5 +202,26 @@ const styles = StyleSheet.create({
   linkCadastro: {
     padding: 10,
     marginVertical: 20,
+  },
+
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+
+  modalContent: {
+    backgroundColor: "white",
+    padding: 20,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+
+  modalButton: {
+    marginTop: 10,
+    padding: 10,
+    backgroundColor: "rgba(39, 39, 39, 1)",
+    borderRadius: 5,
   },
 });
