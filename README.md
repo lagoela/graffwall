@@ -8,7 +8,6 @@ Este projeto é resultado do curso de ADS no SENAC EAD, visando oferecer uma pla
 - Carollina Guedes Machado
 - Danilo Gomes Torquato
 - Enzo Adriano Lagoela Souza
-- Everton Santana Natividade
 - Leonardo Da Silva Oliveira
 - Marcelo Alvaro de Sousa
 - Rodrigo Schiavone Rosa
